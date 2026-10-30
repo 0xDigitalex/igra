@@ -236,7 +236,7 @@
     }).join("");
 
     var recog = V.recognize.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("");
-    var sk = { skill: W.name, skill_gen: W.gen };
+    var sk = { skill: W.name, skill_gen: W.gen, skill_acc: W.acc };
 
     render(
       '<p class="res-kicker">' + R.kicker + "</p>" +
