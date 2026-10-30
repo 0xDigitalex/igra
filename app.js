@@ -320,7 +320,7 @@
       while (ctx.measureText(V.name.toUpperCase()).width > W - 160 && size > 80) { size -= 6; ctx.font = "900 " + size + "px " + F; }
       ctx.fillText(V.name.toUpperCase(), 74, 230 + size * 0.98);
       ctx.font = "800 54px " + F;
-      var ty = 230 + size * 0.98 + 90;
+      var ty = 230 + size * 0.98 + 115;
       var tl = wrap(ctx, "«" + V.tagline + "»", W - 160);
       tl.forEach(function (l, n) { ctx.fillText(l, 80, ty + n * 66); });
       var cy = ty + (tl.length - 1) * 66 + 300, chipY = cy + 280, statY = chipY + 180;
