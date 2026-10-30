@@ -184,13 +184,6 @@
     return lv;
   }
 
-  // зона прокачки: самый слабый стат среди чужих вайбов; при равенстве — противоположный (так же считает бот)
-  function weakest(main, lv) {
-    var cands = KEYS.filter(function (k) { return k !== main; });
-    var min = Math.min.apply(null, cands.map(function (k) { return lv[k]; }));
-    var low = cands.filter(function (k) { return lv[k] === min; });
-    return low.indexOf(OPPOSITE[main]) >= 0 ? OPPOSITE[main] : low[0];
-  }
 
   // насколько ты дальше от середины шкалы, чем остальные (оценка модели)
   function pct(v) { return Math.round(50 + 46 * Math.tanh(Math.abs(v) / 2.6)); }
@@ -216,7 +209,7 @@
 
   function result() {
     var s = score(), V = C.vibes[s.k], R = C.result, lv = levels();
-    var weak = weakest(s.k, lv), W = C.stats[weak];
+    var weak = OPPOSITE[s.k], W = C.stats[weak];  // зона прокачки — стат противоположного вайба (так же в боте)
     store("vibe_last", { k: s.k, at: Date.now() });
     dots(4);
 
